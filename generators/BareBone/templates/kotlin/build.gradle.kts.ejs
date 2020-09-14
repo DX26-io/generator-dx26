@@ -1,0 +1,38 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
+plugins {
+
+	kotlin("jvm") version "1.3.72"
+	kotlin("plugin.spring") version "1.3.72"
+}
+
+group = "<%= basePackageName %>"
+java.sourceCompatibility = JavaVersion.VERSION_<%= javaVersion %>
+
+allprojects {
+
+    apply(plugin = "kotlin")
+
+    group = "<%= [basePackageName ,codeAppName].join('.') %>"
+    version = "0.0.1-SNAPSHOT"
+
+    repositories {
+        mavenCentral()
+    }
+
+    tasks.withType<Test> {
+        useJUnitPlatform()
+    }
+
+    tasks.withType<KotlinCompile> {
+        kotlinOptions {
+            freeCompilerArgs = listOf("-Xjsr305=strict")
+            jvmTarget = "11"
+        }
+    }
+
+    dependencies {
+        implementation("org.jetbrains.kotlin:kotlin-reflect")
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "tags": {
+        "allowUnknownTags": true
+    },
+    "source": {
+        "include": [
+            "generators/generator-base.js"
+        ]
+    },
+    "plugins": [],
+    "templates": {
+        "cleverLinks": true,
+        "monospaceLinks": true,
+        "default": {
+            "outputSourceFiles": true
+        }
+    },
+    "opts": {
+        "recurse": true,
+        "destination": "./docs/",
+        "readme": "README.md"
+    }
+}

@@ -1,0 +1,21 @@
+spring:
+    main:
+        web-application-type: SERVLET
+    application:
+        name: <%= codeAppName %>
+
+server:
+    port: 2025
+    tomcat:
+        max-connections: 150 # Depends on Blocking IO (MC == MT) and Non-Blocking IO (MC > MT)
+        max-threads: 150 # Optimal: 150-200/core
+        accesslog:
+            enabled: true
+            pattern: common
+    ssl:
+        key-store-type: PKCS12
+        key-store: <%= cwd %>/application/src/main/resources/certs/localhost.p12
+        key-store-password: changeMe
+        key-alias: localhost
+    http2:
+        enabled: true
