@@ -1,1 +1,63 @@
+title: DX26 Application Scaffolding
+author: Karthik Reddivari
 theme: jekyll-theme-cayman
+
+navbar-links:
+    About Me: "Something about the author"
+    Resources:
+        - DX26.io: "https://google.com"
+    Author's home: "https://dx26.io"
+
+avatar: "assets/img/me.png"
+round-avatar: true
+title-img: assets/img/me.png
+
+social-network-links:
+    email: "admin@dx26.io"
+#    facebook: username
+    github: karthik-reddivari-dx26
+#    twitter: username
+#  reddit: yourname
+#  linkedin: daattali
+#  xing: yourname
+#  stackoverflow: "3943160/daattali"
+#  snapchat: deanat78
+#  instagram: deanat78
+#  youtube: user/deanat78
+#  spotify: yourname
+#  telephone: 24234535
+#  steam: username
+#  twitch: username
+#  yelp: username
+#  telegram: username
+#  calendly: username
+#  mastodon: instance.url/@username
+#  ORCID: your ORCID ID
+#  google-scholar: your google scholar
+
+# Select which social network share links to show in posts
+share-links-active:
+    twitter: true
+    facebook: true
+    linkedin: true
+    vk: false
+
+url-pretty: "dx26.io"
+
+# Fill in your Google Analytics ID to track your website using Google Analytics
+#google_analytics: ""
+
+# Google Tag Manager ID
+#gtm: ""
+
+# Matomo (aka Piwik) Web statistics
+# Uncomment the following section to enable Matomo. The opt-out parameter controls
+# whether or not you want to allow users to opt out of tracking.
+#matomo:
+#  site_id: "9"
+#  uri: "demo.wiki.pro"
+#  opt-out: true
+
+plugins:
+    - jekyll-paginate
+    - jekyll-sitemap
