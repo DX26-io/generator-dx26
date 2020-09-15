@@ -23,7 +23,10 @@
       <change afterPath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/deployment/src/main/helm/chart/templates/configmap.yaml.ejs" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/service/src/main/kotlin/package/processor/IOInterface.kt.ejs" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/service/src/main/kotlin/package/processor/Impl.kt.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin" beforeDir="false" afterPath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/.yo-rc.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/TODO.md" beforeDir="false" />
@@ -89,6 +92,7 @@
       <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/service/src/main/resources/application.yml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/service/src/test/kotlin/io/dx26/platform/data/kafkakinesisbridge/service/ServiceTests.kt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/settings.gradle.kts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +117,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/service/src/main/kotlin/package/bridge" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/docs" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -126,18 +130,19 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/service/src/main/kotlin/package/bridge" />
-      <recent name="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/deployment/src/main/helm/chart/templates" />
-      <recent name="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/application/src/main/resources/avro" />
-      <recent name="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/service/src/main/kotlin/package" />
       <recent name="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/service/src/main/kotlin/package/bridge/processor" />
       <recent name="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/application/src/main/kotlin/package" />
       <recent name="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/application/src/test/kotlin/package" />
       <recent name="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/service/src/test/kotlin/package" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/docs" />
+      <recent name="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/service/src/main/kotlin/package/bridge" />
+      <recent name="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/deployment/src/main/helm/chart/templates" />
+      <recent name="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/application/src/main/resources/avro" />
+      <recent name="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -155,6 +160,7 @@
       <workItem from="1599472681691" duration="662000" />
       <workItem from="1599729652465" duration="5730000" />
       <workItem from="1599849018876" duration="122000" />
+      <workItem from="1600156802491" duration="3264000" />
     </task>
     <servers />
   </component>

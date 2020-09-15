@@ -1,5 +1,5 @@
 {
-  "name": "generator-dx26",
+  "name": "@dx26-io/generator-dx26",
   "version": "0.0.1",
   "description": "Scaffolding for DX26 applications",
   "main": "index.ts",
