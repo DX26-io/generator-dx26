@@ -1,6 +1,6 @@
 {
   "name": "@dx26-io/generator-dx26",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Scaffolding for DX26 applications",
   "main": "index.ts",
   "scripts": {
