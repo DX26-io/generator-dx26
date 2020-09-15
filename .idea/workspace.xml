@@ -20,79 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4d4c926-87a2-4d89-bbd9-31df1b03cb3d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/deployment/src/main/helm/chart/templates/configmap.yaml.ejs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/service/src/main/kotlin/package/processor/IOInterface.kt.ejs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/service/src/main/kotlin/package/processor/Impl.kt.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin" beforeDir="false" afterPath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/.yo-rc.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/TODO.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/application/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/application/build.gradle.kts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/application/settings.gradle.kts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/application/src/main/docker/compose/dc-template.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/application/src/main/docker/compose/kafka-avro-config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/application/src/main/docker/compose/kafka-avro-config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/application/src/main/docker/compose/kafka-json-config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/application/src/main/docker/compose/kafka-json-config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/application/src/main/docker/compose/kinesis-json-config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/application/src/main/docker/compose/kinesis-json-config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/application/src/main/docker/compose/pubsub-json-config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/application/src/main/docker/compose/pubsub-json-config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/application/src/main/kotlin/io/dx26/platform/data/kafkakinesisbridge/application/Application.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/application/src/main/kotlin/io/dx26/platform/data/kafkakinesisbridge/application/metrics/ServerMetrics.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/application/src/main/resources/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/application/src/main/resources/avro/shipment-anomoly-customsr.avsc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/application/src/main/resources/certs/generate.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/application/src/main/resources/creds/gcp-cred-dx26-application.json" beforeDir="false" afterPath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/application/src/main/resources/creds/gcp-cred-dx26-application.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/application/src/main/resources/profiles/application-test.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/application/src/test/kotlin/io/dx26/platform/data/kafkakinesisbridge/application/ApplicationTests.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/build.gradle.kts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/deployment/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/deployment/build.gradle.kts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/deployment/settings.gradle.kts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/deployment/src/main/helm/KafkaKinesisBridge/.helmignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/deployment/src/main/helm/KafkaKinesisBridge/Chart.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/deployment/src/main/helm/KafkaKinesisBridge/templates/NOTES.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/deployment/src/main/helm/KafkaKinesisBridge/templates/_helpers.tpl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/deployment/src/main/helm/KafkaKinesisBridge/templates/configmap.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/deployment/src/main/helm/KafkaKinesisBridge/templates/deployment.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/deployment/src/main/helm/KafkaKinesisBridge/templates/hpa.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/deployment/src/main/helm/KafkaKinesisBridge/templates/ingress.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/deployment/src/main/helm/KafkaKinesisBridge/templates/service.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/deployment/src/main/helm/KafkaKinesisBridge/templates/serviceaccount.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/deployment/src/main/helm/KafkaKinesisBridge/templates/tests/test-connection.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/deployment/src/main/helm/KafkaKinesisBridge/values.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/deployment/src/main/resources/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/service/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/service/build.gradle.kts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/service/settings.gradle.kts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/service/src/main/kotlin/io/dx26/platform/data/kafkakinesisbridge/service/Service.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/service/src/main/kotlin/io/dx26/platform/data/kafkakinesisbridge/service/bridge/ckck/CKCKBridge.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/service/src/main/kotlin/io/dx26/platform/data/kafkakinesisbridge/service/bridge/ckck/CKCKIOInterface.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/service/src/main/kotlin/io/dx26/platform/data/kafkakinesisbridge/service/bridge/ckps/CKPSBridge.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/service/src/main/kotlin/io/dx26/platform/data/kafkakinesisbridge/service/bridge/ckps/CKPSIOInterface.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/service/src/main/kotlin/io/dx26/platform/data/kafkakinesisbridge/service/bridge/ckvk/CKVKBridge.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/service/src/main/kotlin/io/dx26/platform/data/kafkakinesisbridge/service/bridge/ckvk/CKVKIOInterface.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/service/src/main/kotlin/io/dx26/platform/data/kafkakinesisbridge/service/bridge/kick/KICKBridge.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/service/src/main/kotlin/io/dx26/platform/data/kafkakinesisbridge/service/bridge/kick/KICKIOInterface.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/service/src/main/kotlin/io/dx26/platform/data/kafkakinesisbridge/service/bridge/kir/KIRIOInterface.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/service/src/main/kotlin/io/dx26/platform/data/kafkakinesisbridge/service/bridge/kir/KIRListner.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/service/src/main/kotlin/io/dx26/platform/data/kafkakinesisbridge/service/bridge/psck/PSCKBridge.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/service/src/main/kotlin/io/dx26/platform/data/kafkakinesisbridge/service/bridge/psck/PSCKIOInterface.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/service/src/main/kotlin/io/dx26/platform/data/kafkakinesisbridge/service/bridge/psps/PSPSBridge.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/service/src/main/kotlin/io/dx26/platform/data/kafkakinesisbridge/service/bridge/psps/PSPSIOInterface.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/service/src/main/kotlin/io/dx26/platform/data/kafkakinesisbridge/service/bridge/psr/PSRIOInterface.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/service/src/main/kotlin/io/dx26/platform/data/kafkakinesisbridge/service/bridge/psr/PSRListner.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/service/src/main/kotlin/io/dx26/platform/data/kafkakinesisbridge/service/bridge/vkck/VKCKBridge.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/service/src/main/kotlin/io/dx26/platform/data/kafkakinesisbridge/service/bridge/vkck/VKCKIOInterface.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/service/src/main/kotlin/io/dx26/platform/data/kafkakinesisbridge/service/bridge/vkki/VKKIBridge.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/service/src/main/kotlin/io/dx26/platform/data/kafkakinesisbridge/service/bridge/vkki/VKKIIOInterface.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/service/src/main/kotlin/io/dx26/platform/data/kafkakinesisbridge/service/entity/Shipment.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/service/src/main/kotlin/io/dx26/platform/data/kafkakinesisbridge/service/metrics/ChannelMetrics.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/service/src/main/resources/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/service/src/test/kotlin/io/dx26/platform/data/kafkakinesisbridge/service/ServiceTests.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/generators/DataAcquisition/templates/kotlin/settings.gradle.kts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/INDEX.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/generators/KafkaKinesisBridge/index.spec.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/generators/BareBone/index.spec.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,6 +91,7 @@
       <workItem from="1599729652465" duration="5730000" />
       <workItem from="1599849018876" duration="122000" />
       <workItem from="1600156802491" duration="3264000" />
+      <workItem from="1600173318780" duration="240000" />
     </task>
     <servers />
   </component>
