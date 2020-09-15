@@ -1,7 +1,11 @@
 title: DX26 Application Scaffolding
+subtitle: Data Platform as a Service
 author: Karthik Reddivari
 theme: jekyll-theme-cayman
-
+description: >-
+    Streaming Application Scaffolding for Apache Kafka, Kinesis and Google PubSub. DX26 is an initiative to build and
+    operate a Data Platform (Data Platform as a Service - DPaaS) with loe efforts to maintain and improve time to value
+    for data solutions. DX26 Applications scaffolding helps speed up streaming application development.
 navbar-links:
     About Me: "Something about the author"
     Resources:
