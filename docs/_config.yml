@@ -15,6 +15,7 @@ navbar-links:
 avatar: "assets/img/me.png"
 round-avatar: true
 title-img: assets/img/me.png
+read_time: true
 
 social-network-links:
     email: "admin@dx26.io"
@@ -65,3 +66,15 @@ url-pretty: "dx26.io"
 plugins:
     - jekyll-paginate
     - jekyll-sitemap
+
+footer:
+    links:
+        - label: "Twitter"
+          icon: "fab fa-fw fa-twitter-square"
+          url: "https://twitter.com/mmistakes"
+        - label: "GitHub"
+          icon: "fab fa-fw fa-github"
+          url: "https://github.com/mmistakes"
+        - label: "Instagram"
+          icon: "fab fa-fw fa-instagram"
+          url: "https://instagram.com/mmistakes"
