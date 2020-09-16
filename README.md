@@ -43,7 +43,7 @@ and plugins needed to build your application and kick start your project
 yo @dx26-io/dx26:BareBone
 ```
 
-### DataAcquisition 
+### DataAcquisition
 
 This generator can be used when you are planning to build a message processing application which
 acts as a [Messaging Bridge](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessagingBridge.html)
