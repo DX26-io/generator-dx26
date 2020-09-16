@@ -46,7 +46,7 @@ const FileMapper = (source, destination, appBaseImportPath, preferredLanguage) =
         kotlin: {
             git: [
                 {
-                    source: `${source}/kotlin/.gitignore`,
+                    source: `${source}/kotlin/gitignore`,
                     destination: `${destination}/.gitignore`,
                     operation: Constants.move,
                 },
@@ -181,11 +181,6 @@ const FileMapper = (source, destination, appBaseImportPath, preferredLanguage) =
                 ],
             },
             docs: [
-                {
-                    source: `${source}/kotlin/HELP.md.ejs`,
-                    destination: `${destination}/HELP.md`,
-                    operation: Constants.template,
-                },
                 {
                     source: `${source}/kotlin/README.md.ejs`,
                     destination: `${destination}/README.md`,
