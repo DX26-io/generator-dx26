@@ -1,0 +1,47 @@
+table:
+    name: shipment # Change this to reflect which topic / channel, you would like to generate data into
+    fields:
+        - name: id
+          type: int
+          min: 1
+          max: 1000000
+        - name: name
+          type: varchar(50)
+          size: 50
+        - name: country
+          type: varchar(50)
+          size: 50
+          values: ["UK", "India", "Australia", "USA", "Germany", "France", "Finland"]
+        - name: transaction_amount
+          type: real
+          min: 100
+          max: 200000
+        - name: transaction_quantity
+          type: int
+          min: 1
+          max: 1000
+        - name: product
+          type: varchar(50)
+          size: 50
+          values: ["Shoes", "t-shirts", "pants", "sunglasses", "electorics", "software", "furniture"]
+        - name: inserted_on
+          type: timestamp
+        - name: shipping_location
+          type: varchar(50)
+          size: 50
+          values: ["UK", "India", "Australia", "USA", "Germany", "France", "Finland"]
+        - name: updated_on
+          type: timestamp
+        - name: shipping_address
+          type: varchar(100)
+          size: 100
+
+# Can be set as environment variables
+connection:
+    type: kinesis # CONNECTION_TYPE
+    accessKeyId: AKIAR6JS64ZSBJQIK7NW # AWS_ACCESS_KEY_ID
+    secretAccessKey: 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 # AWS_SECRET_ACCESS_KEY
+    region: us-east-1 # AWS_REGION
+
+records: "100000" # RECORDS
+frequency: 60 # FREQUENCY -> for ten records a second use 0.1

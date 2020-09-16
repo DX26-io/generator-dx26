@@ -1,0 +1,126 @@
+version: "3.5"
+services:
+    <% if (needsConfluentPlatformSupport || needsVanillaKafkaSupport) { %>
+    zk:
+        image: confluentinc/cp-zookeeper:{{io.confluent:kafka-schema-registry}}
+        container_name: zk
+        ports:
+            - "2888-3888:2888-3888"
+            - "2181:2181"
+        restart: always
+#        volumes:
+#            - data-zk:/var/lib/zookeeper
+        environment:
+            - ZOOKEEPER_SERVER_ID=1
+            - ZOOKEEPER_CLIENT_PORT=2181
+            - ZOOKEEPER_TICK_TIME=2000
+            - ZOOKEEPER_INIT_LIMIT=5
+            - ZOOKEEPER_SYNC_LIMIT=2
+            - ZOOKEEPER_SERVERS=zk:2888:3888
+
+    kafka:
+        image: confluentinc/cp-enterprise-kafka:{{io.confluent:kafka-schema-registry}}
+        container_name: kafka
+        restart: always
+        hostname: kafka
+        ports:
+            - "9093:9093"
+#        volumes:
+#            - data-kafka:/var/lib/kafka/data
+        environment:
+            KAFKA_BROKER_ID: 101
+            KAFKA_ZOOKEEPER_CONNECT: zk:2181
+            KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:9093
+            KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+            KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+            KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+            KAFKA_DELETE_TOPIC_ENABLE: "true"
+            KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    <% } %>
+    <% if (needsConfluentPlatformSupport ) { %>
+    confluent-schema-registry:
+        image: confluentinc/cp-schema-registry:{{io.confluent:kafka-schema-registry}}
+        container_name: confluent-schema-registry
+        restart: always
+        ports:
+            - "8081:8081"
+        environment:
+            SCHEMA_REGISTRY_HOST_NAME: confluent-schema-registry
+            SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: zk:2181
+            SCHEMA_REGISTRY_LISTENERS: http://confluent-schema-registry:8081
+    <% } %>
+    <% if (needsVanillaKafkaSupport) { %>
+    dx26-schema-registry:
+        image: dx26io/schema-regsitry:v0.0.1-SNAPSHOT
+        container_name: dx26-schema-registry
+        restart: always
+        ports:
+            - "8990:8990"
+    <% } %>
+    <% if (needsConfluentPlatformSupport || needsVanillaKafkaSupport) { %>
+    control-center:
+        image: confluentinc/cp-enterprise-control-center:{{io.confluent:kafka-schema-registry}}
+        container_name: control-center
+        restart: always
+        ports:
+            - "9021:9021"
+        environment:
+            CONTROL_CENTER_BOOTSTRAP_SERVERS: kafka:9092
+            CONTROL_CENTER_ZOOKEEPER_CONNECT: zk:2181
+            CONTROL_CENTER_REPLICATION_FACTOR: 1
+            CONTROL_CENTER_MONITORING_INTERCEPTOR_TOPIC_REPLICATION: 1
+            CONTROL_CENTER_INTERNAL_TOPICS_REPLICATION: 1
+            CONTROL_CENTER_COMMAND_TOPIC_REPLICATION: 1
+            CONTROL_CENTER_METRICS_TOPIC_REPLICATION: 1
+            CONTROL_CENTER_STREAMS_NUM_STREAM_THREADS: 1
+            CONTROL_CENTER_STREAMS_CONSUMER_REQUEST_TIMEOUT_MS: "960032"
+            CONTROL_CENTER_SCHEMA_REGISTRY_URL: "http://confluent-schema-registry:8081"
+    <% } %>
+    <% if (needsKafkaAvroDataGeneration) {%>
+    # Produces Avro data into a specific Kafka topic. Configuration is available in the config file
+    kafka-avro-data-gen:
+        image: dx26io/data-generator:v0.1.1
+        container_name: kafka-avro-data-gen
+        restart: always
+        environment:
+            FILE_LOCATION: /config/kafka-avro-config.yaml
+        volumes:
+            - ./config:/config
+    <% } %>
+    <% if (needsKafkaJsonDataGeneration) { %>
+    # Produces JSON data into a specific kafka topic. Configuration is available in the config file
+    kafka-json-data-gen:
+        image: dx26io/data-generator:v0.1.1
+        container_name: kafka-json-data-gen
+        restart: always
+        environment:
+            FILE_LOCATION: /config/kafka-json-config.yaml
+        volumes:
+            - ./config:/config
+    <% } %>
+    <% if (needsKinesisJsonDataGeneration) { %>
+    # Produces JSON data into a specific Kinesis stream. Configuration is available in the config file
+    kinesis-json-data-gen:
+        image: dx26io/data-generator:v0.1.1
+        container_name: kinesis-json-data-gen
+        restart: always
+        environment:
+            FILE_LOCATION: /config/kinesis-json-config.yaml
+        volumes:
+            - ./config:/config
+    <% } %>
+    <% if (needsPubSubJsonDataGeneration) { %>
+    # Produces JSON data into a specific PubSub topic. Configuration is available in the config file
+    pubsub-json-data-gen:
+        image: dx26io/data-generator:v0.1.1
+        container_name: pubsub-json-data-gen
+        restart: always
+        environment:
+            FILE_LOCATION: /config/pubsub-json-config.yaml
+        volumes:
+            - ./config:/config
+            - ./credentials:/credentials
+    <% } %>
+#volumes:
+#    data-zk:
+#    data-kafka:

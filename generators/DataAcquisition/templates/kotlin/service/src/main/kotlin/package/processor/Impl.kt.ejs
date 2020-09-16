@@ -1,0 +1,23 @@
+package <%= processor.appBaseImportPath %>.service.<%= processor.processorName %>
+
+import mu.KotlinLogging
+<% if (processor.needsGenericRecord) { %>import org.apache.avro.generic.GenericRecord<% } %>
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
+import org.springframework.cloud.stream.annotation.EnableBinding
+import org.springframework.integration.annotation.Transformer
+import org.springframework.messaging.Message
+import org.springframework.stereotype.Component
+
+@Component
+@EnableBinding(<%= processor.className %>IOInterface::class)
+@ConditionalOnProperty(name = ["dx26.processor.<%= processor.processorName %>.enabled"], havingValue = "true")
+class <%= processor.className %>Impl {
+    private val logger = KotlinLogging.logger {  }
+
+    @Transformer(inputChannel = "<%= processor.processorName %>-input", outputChannel = "<%= processor.processorName %>-output")
+    fun bridgeEvent(event: Message<<%= processor.input.contentTypeClass %>>): Message<<%= processor.output.contentTypeClass %>> {
+        // TODO: Write your event processing logic here
+        logger.debug { event.toString() }
+        <% if (processor.input.contentTypeClass === processor.output.contentTypeClass) { %>return event<% } %>
+    }
+}

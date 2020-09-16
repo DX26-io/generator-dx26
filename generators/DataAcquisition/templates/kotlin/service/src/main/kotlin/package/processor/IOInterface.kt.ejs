@@ -1,0 +1,15 @@
+package <%= processor.appBaseImportPath %>.service.<%= processor.processorName %>
+
+import org.springframework.cloud.stream.annotation.Input
+import org.springframework.cloud.stream.annotation.Output
+import org.springframework.messaging.MessageChannel
+import org.springframework.messaging.SubscribableChannel
+
+interface <%= processor.className %>IOInterface {
+
+    @Input("<%= processor.processorName %>-input")
+    fun input(): SubscribableChannel
+
+    @Output("<%= processor.processorName %>-output")
+    fun output(): MessageChannel
+}

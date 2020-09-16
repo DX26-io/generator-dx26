@@ -1,0 +1,18 @@
+package <%= appBaseImportPath %>.application
+
+import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.runApplication
+<% if (needsVanillaKafkaSupport) { %>import org.springframework.cloud.schema.registry.client.EnableSchemaRegistryClient<% } %>
+import org.springframework.context.annotation.ComponentScan
+
+@SpringBootApplication
+@ComponentScan(basePackages = [
+    "<%= appBaseImportPath %>.application",
+    "<%= appBaseImportPath %>.service"
+])
+<% if (needsVanillaKafkaSupport) { %>@EnableSchemaRegistryClient<% } %>
+open class Application
+
+fun main(args: Array<String>) {
+    runApplication<Application>(*args)
+}

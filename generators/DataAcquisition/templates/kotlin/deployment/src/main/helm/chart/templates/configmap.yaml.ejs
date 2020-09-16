@@ -1,0 +1,163 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: {{ include "<%= codeAppName %>.fullname" . }}
+    labels:
+    {{- include "<%= codeAppName %>.labels" . | nindent 8 }}
+data:
+    application-test.yaml: |
+        spring:
+            main:
+                web-application-type: SERVLET
+            application:
+                name: <%= codeAppName %>
+            cloud:
+                stream:
+                    ## Defining the binders involved
+                    binders:
+                        <% if (needsConfluentPlatformSupport) { %>
+                        # Confluent Kafka binder configuration
+                        ck:
+                            type: kafka
+                            environment:
+                                spring:
+                                    cloud:
+                                        stream:
+                                            kafka:
+                                                binder:
+                                                    brokers: localhost
+                                                    defaultBrokerPort: 9093
+                                                    producer-properties:
+                                                        requiredAcks: 1
+                                                    <% if (needsAvroSupport) { %>
+                                                        schema.registry.url: http://localhost:8081
+                                                        value.serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+                                                        key.serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+                                                    consumer-properties:
+                                                        schema.registry.url: http://localhost:8081
+                                                        value.deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+                                                        key.deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+                                                    <% } %>
+                        <% } %>
+                        <% if (needsVanillaKafkaSupport) { %>
+                        vk:
+                            type: kafka
+                            environment:
+                                spring:
+                                    cloud:
+                                        stream:
+                                            kafka:
+                                                binder:
+                                                    brokers: localhost
+                                                    defaultBrokerPort: 9093
+                                                    producer-properties:
+                                                        client.id: ${spring.application.name}-dx26-sr
+                                                    <% if (needsAvroSupport) { %>
+                                                        schema.registry.url: http://localhost:8990
+                                                    consumer-properties:
+                                                        schema.registry.url: http://localhost:8990
+                                                    <% } %>
+                        <% } %>
+                        <% if (needsKinesisSupport) { %>
+                        ki:
+                            type: kinesis
+                        <% } %>
+                        <% if (needsPubSubSupport) { %>
+                        ps:
+                            type: pubsub
+                        <% } %>
+                    <% if (needsKinesisSupport) { %>
+                    kinesis:
+                        binder:
+                            checkpoint:
+                                table: kinesis-stream-checkpoint
+                                readCapacity: 1
+                                writeCapacity: 1
+                            autoCreateStream: false
+                    <% } %>
+                    # Binding for input and output channels
+                    <% if (processorList.length > 0) { %>
+                    bindings:
+                        <% for (let [index,data] of processorList.entries()) { %>
+                        <%= processors[data].processorName %>-input:
+                            destination: <%= processors[data].input.destination %>
+                            group: <%= processors[data].processorName %>-input-consumer
+                            content-type: <%= processors[data].input.contentType %>
+                            binder: <%= binders[processors[data].input.binder] %>
+                            <% if (binders[processors[data].input.binder] === 'ck' || binders[processors[data].input.binder] === 'vk') { %>
+                            consumer:
+                                max-attempts: 7
+                                back-off-initial-interval: 1000
+                                back-off-max-interval: 3000
+                                back-off-multiplier: 2.0
+                            <% } %>
+                        <%= processors[data].processorName %>-output:
+                            destination: <%= processors[data].output.destination %>
+                            group: <%= processors[data].processorName %>-output-producer
+                            content-type: <%= processors[data].output.contentType %>
+                            binder: <%= binders[processors[data].output.binder] %>
+                            <% if (binders[processors[data].output.binder] === 'ck' || binders[processors[data].output.binder] === 'vk') { %>
+                            producer:
+                                use-native-encoding: true
+                                configuration:
+                                    client.id: <%= processors[data].processorName %>-output-producer
+                            <% } %>
+                        <% } %>
+                    <% } %>
+                    <% if (needsVanillaKafkaSupport || needsAvroSupport) { %>
+                    schema:
+                        avro:
+        #                    dynamicSchemaGenerationEnabled: true
+                            schema-locations: classpath:avro/shipment-anomoly-sample.avsc
+
+        #            kafka:
+        #                bindings:
+        #                    ck-shipment-avro-input:
+        #                        consumer:
+        #                            autoCommitOnError: false # suppresses auto-commits for messages that result in errors
+        #                            enableDlq: true
+        #                            dlqName: shipment-dlq
+                    <% } %>
+                <% if (needsPubSubSupport) { %>
+                gcp:
+                    pubsub:
+                        project-id: dx26-staging-20207
+                        credentials:
+                            location: classpath:creds/gcp-cred-dx26-application.json # TODO Please change the credentials before running the application
+                <% } %>
+        server:
+            port: 2025
+            tomcat:
+                max-connections: 150 # Depends on Blocking IO (MC == MT) and Non-Blocking IO (MC > MT)
+                accesslog:
+                    enabled: true
+                    pattern: common
+            ssl:
+                key-store-type: PKCS12
+                key-store: classpath:certs/localhost.p12
+                key-store-password: changeMe
+                key-alias: localhost
+            http2:
+                enabled: true
+        <% if (needsKinesisSupport) { %>
+        cloud:
+            aws:
+                region:
+                    static: us-east-1
+                stack:
+                    auto: false
+                credentials:
+                    accessKey: xxxxxxxxxxxxxxx # TODO: Provide AccessKey
+                    secretKey: xxxxxxxxxxxxxxxxxxxxxxxxxx # TODO Provide SecretKey
+        #            profile-name: dev-dx26
+        #            useDefaultAwsCredentialsChain: true
+        <% } %>
+        dx26:
+            processor:
+            <% for (let [index,data] of processorList.entries()) { %>
+                <%= data %>:
+                    enabled: true
+            <% } %>
+        logging:
+            level:
+                <%= appBaseImportPath %>: DEBUG

@@ -1,0 +1,20 @@
+package <%= appBaseImportPath %>.service.metrics
+
+import mu.KotlinLogging
+import org.springframework.beans.factory.annotation.Value
+import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.Configuration
+
+@Configuration
+class ChannelMetrics {
+
+    private val logger = KotlinLogging.logger{}
+
+    @Value("\${spring.application.name}")
+    lateinit var readConfig: String
+
+    @Bean
+    fun gatherChannelMetrics(){
+        logger.debug { "Gathering Channel Metrics: ${readConfig}" }
+    }
+}

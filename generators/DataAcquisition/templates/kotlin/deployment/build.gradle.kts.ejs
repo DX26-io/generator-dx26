@@ -1,0 +1,60 @@
+dependencies {
+
+}
+
+var organization = project.ext.get("organization")
+var maintainer = project.ext.get("maintainer")
+
+docker {
+    name = "${organization}/${rootProject.name}:v${version}"
+    tag("latest", "${organization}/${rootProject.name}:latest")
+    setDockerfile(File("src/main/docker/Dockerfile"))
+    noCache(true)
+    buildArgs(
+        mutableMapOf(
+            "BUILD_VERSION" to "v${version}",
+            "MAINTAINER" to "${maintainer}",
+            "APP_NAME" to "${rootProject.name}",
+            "ORGANISATION" to "${organization}"
+        )
+    )
+}
+
+helm {
+    charts {
+        create(rootProject.name) {
+            chartName.set(rootProject.name)
+            chartVersion.set("${version}")
+            sourceDir.set(file("src/main/helm/${rootProject.name}"))
+        }
+    }
+}
+
+// Uncomment the below lines if you plan to publish the chart using: ./gradlew :deployment:helmPublish
+//helm {
+//    repositories {
+//        create(rootProject.name) {
+//            url("http://helm-repo.example.com/")
+//            credentials {
+//                username.set("user")
+//                password.set("password")
+//            }
+//        }
+//    }
+//}
+
+tasks["docker"].doFirst {
+   println("Copying fat jar from ${rootProject.rootDir}/application/build/libs/application-${version}.jar to ${rootProject.projectDir}/build/docker")
+    copy {
+        from("src/main/docker/Dockerfile")
+        into("build/docker")
+    }
+    copy {
+        from("${rootProject.rootDir}/application/build/libs/application-${version}.jar")
+        into("build/docker")
+    }
+}
+
+tasks["bootJar"].enabled = false
+
+tasks["build"].finalizedBy("dockerTag")

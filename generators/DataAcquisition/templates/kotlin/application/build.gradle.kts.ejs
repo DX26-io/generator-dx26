@@ -1,0 +1,74 @@
+import java.lang.Thread.sleep
+
+dependencies {
+    // Spring & Kotlin
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+
+    // Service
+    implementation(project(":service"))
+    <% if (needsVanillaKafkaSupport) { %>
+    // DX26 SR
+    implementation("org.springframework.cloud:spring-cloud-schema-registry-client:1.0.6.RELEASE")
+    <% } %>
+    // Testing
+    testImplementation("org.springframework.boot:spring-boot-starter-test") {
+        exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
+    }
+    <% if (needsConfluentPlatformSupport || needsVanillaKafkaSupport) { %>
+    // DevOps
+    docker("io.confluent:kafka-schema-registry:5.4.1")
+    <% } %>
+}
+
+dockerCompose.setTemplate("src/main/docker/compose/dc-template.yaml")
+dockerCompose.setDockerComposeFile("build/docker/compose/compose.yaml")
+
+tasks["test"]
+    .dependsOn("dockerComposeUp")
+    .finalizedBy("dockerComposeDown")
+
+tasks["bootRun"]
+    .dependsOn("dockerComposeUp")
+//    .finalizedBy("dockerComposeDown")
+
+tasks["generateDockerCompose"]
+    .doLast {
+        <% if (needsKafkaAvroDataGeneration) { %>
+        copy {
+            from("src/main/docker/compose/kafka-avro-config.yaml")
+            into("build/docker/compose/config")
+        }
+        <% } %>
+        <% if (needsKafkaJsonDataGeneration) { %>
+        copy {
+            from("src/main/docker/compose/kafka-json-config.yaml")
+            into("build/docker/compose/config")
+        }
+        <% } %>
+        <% if (needsKinesisJsonDataGeneration) { %>
+        copy {
+            from("src/main/docker/compose/kinesis-json-config.yaml")
+            into("build/docker/compose/config")
+        }
+        <% } %>
+        <% if (needsPubSubJsonDataGeneration) { %>
+        copy {
+            from("src/main/docker/compose/pubsub-json-config.yaml")
+            into("build/docker/compose/config")
+        }
+        copy {
+            from("src/main/resources/creds/gcp-cred-dx26-application.json")
+            into("build/docker/compose/credentials")
+        }
+        <% } %>
+    }
+
+tasks["dockerComposeUp"]
+    .dependsOn("generateDockerCompose")
+    .doLast {
+        val waitTime = 20L
+        println("Waiting for ${waitTime} sec for dependencies to come up .....")
+        sleep(waitTime * 1000)
+    }
