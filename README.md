@@ -40,7 +40,7 @@ and plugins needed to build your application and kick start your project
 ### Invocation
 
 ```bash
-yo dx26:BareBone
+yo @dx26-io/dx26:BareBone
 ```
 
 ### DataAcquisition 
@@ -53,5 +53,5 @@ events in real-time.
 ### Invocation
 
 ```bash
-yo dx26:DataAcquisition
+yo @dx26-io/dx26:DataAcquisition
 ```
